@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Positron Career Institute – JEE | NEET | NDA | Boards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A2540;
+    --blue: #007BFF;
+    --yellow: #FFC300;
+    --white: #FFFFFF;
+    --glass: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.12);
+    --text-muted: rgba(255,255,255,0.55);
+    --text-dim: rgba(255,255,255,0.75);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{font-family:'DM Sans',sans-serif;background:#060f1f;color:#fff;overflow-x:hidden}
+
+  /* UTILITY */
+  .container{max-width:1160px;margin:0 auto;padding:0 24px}
+  .section-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);font-weight:500;margin-bottom:16px}
+  .fade-in{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+  .fade-in.visible{opacity:1;transform:translateY(0)}
+  .stagger-1{transition-delay:0.1s}
+  .stagger-2{transition-delay:0.22s}
+  .stagger-3{transition-delay:0.34s}
+  .stagger-4{transition-delay:0.46s}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:background 0.4s,backdrop-filter 0.4s}
+  nav.scrolled{background:rgba(6,15,31,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.02em;text-decoration:none}
+  .logo span{color:var(--yellow)}
+  .nav-links{display:flex;gap:36px;list-style:none}
+  .nav-links a{font-size:14px;color:var(--text-dim);text-decoration:none;transition:color 0.2s;font-weight:400}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{background:var(--yellow);color:#0A2540;font-size:13px;font-weight:600;padding:10px 22px;border-radius:100px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;font-family:'Syne',sans-serif}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(255,195,0,0.35)}
+  .nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+  .nav-mobile-btn span{display:block;width:22px;height:1.5px;background:#fff;transition:transform 0.3s}
+
+  /* HERO */
+  #hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 0 80px}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,123,255,0.18) 0%, transparent 65%), radial-gradient(ellipse 50% 40% at 80% 50%, rgba(255,195,0,0.06) 0%, transparent 60%), linear-gradient(180deg,#060f1f 0%,#071425 100%)}
+  .hero-glow{position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse, rgba(0,123,255,0.12) 0%, transparent 70%);pointer-events:none}
+  .hero-content{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto}
+  .hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,195,0,0.1);border:1px solid rgba(255,195,0,0.25);border-radius:100px;padding:6px 16px;font-size:12px;color:var(--yellow);font-weight:500;margin-bottom:36px;letter-spacing:0.04em}
+  .hero-pill-dot{width:6px;height:6px;background:var(--yellow);border-radius:50%;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.85)}}
+  h1{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,72px);font-weight:800;line-height:1.08;letter-spacing:-0.025em;margin-bottom:24px;color:#fff}
+  h1 .highlight{color:var(--yellow)}
+  .hero-sub{font-size:clamp(15px,2vw,19px);color:var(--text-dim);line-height:1.7;max-width:520px;margin:0 auto 44px;font-weight:300}
+  .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--yellow);color:#0A2540;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;padding:15px 30px;border-radius:100px;text-decoration:none;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,195,0,0.38)}
+  .btn-outline{background:transparent;color:#fff;font-family:'Syne',sans-serif;font-size:14px;font-weight:600;padding:14px 28px;border-radius:100px;text-decoration:none;border:1.5px solid rgba(255,255,255,0.25);cursor:pointer;transition:border-color 0.2s,background 0.2s;display:inline-flex;align-items:center;gap:8px}
+  .btn-outline:hover{border-color:rgba(255,255,255,0.55);background:rgba(255,255,255,0.05)}
+  .hero-stats{display:flex;justify-content:center;gap:clamp(24px,5vw,72px);margin-top:72px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.07)}
+  .stat-num{font-family:'Syne',sans-serif;font-size:clamp(26px,4vw,38px);font-weight:800;color:#fff;letter-spacing:-0.02em}
+  .stat-num span{color:var(--yellow)}
+  .stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;letter-spacing:0.04em}
+
+  /* PARTICLE CANVAS */
+  #particle-canvas{position:absolute;inset:0;pointer-events:none;opacity:0.6}
+
+  /* TRUSTED */
+  .trusted-bar{padding:24px 0;border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.015)}
+  .trusted-inner{display:flex;align-items:center;gap:40px;justify-content:center;flex-wrap:wrap}
+  .trusted-label{font-size:11px;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase}
+  .trust-badge{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.02em;white-space:nowrap}
+
+  /* COURSES */
+  #courses{padding:120px 0}
+  .section-head{text-align:center;margin-bottom:64px}
+  .section-head h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-0.025em;line-height:1.1}
+  .section-head p{color:var(--text-dim);margin-top:16px;font-size:17px;font-weight:300;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+  .courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .course-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:36px 28px;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+  .course-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left, rgba(0,123,255,0.12) 0%, transparent 70%);opacity:0;transition:opacity 0.4s}
+  .course-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 0 1px rgba(255,195,0,0.3);border-color:rgba(255,195,0,0.3)}
+  .course-card:hover::before{opacity:1}
+  .course-icon{width:48px;height:48px;border-radius:14px;background:rgba(0,123,255,0.15);border:1px solid rgba(0,123,255,0.25);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:24px}
+  .course-card h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:10px;letter-spacing:-0.01em}
+  .course-card p{font-size:14px;color:var(--text-muted);line-height:1.65}
+  .course-tag{display:inline-flex;align-items:center;margin-top:20px;font-size:11px;color:var(--yellow);background:rgba(255,195,0,0.1);border:1px solid rgba(255,195,0,0.2);padding:5px 12px;border-radius:100px;letter-spacing:0.05em}
+
+  /* STORY */
+  #story{padding:120px 0;background:linear-gradient(180deg,#060f1f 0%,#030a15 50%,#060f1f 100%)}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .story-steps{display:flex;flex-direction:column;gap:0}
+  .story-step{padding:28px 0;border-bottom:1px solid rgba(255,255,255,0.06);cursor:pointer;transition:all 0.3s}
+  .story-step:first-child{border-top:1px solid rgba(255,255,255,0.06)}
+  .story-step-num{font-size:11px;color:var(--text-muted);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;font-weight:500}
+  .story-step h3{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em;transition:color 0.3s}
+  .story-step p{font-size:14px;color:var(--text-muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.4s ease,opacity 0.3s;opacity:0}
+  .story-step.active p{max-height:120px;opacity:1}
+  .story-step.active h3{color:var(--yellow)}
+  .story-step.active{border-bottom-color:rgba(255,195,0,0.2)}
+  .story-visual{position:sticky;top:120px;height:400px;background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;display:flex;align-items:center;justify-content:center;overflow:hidden;backdrop-filter:blur(10px)}
+  .story-visual-inner{text-align:center;padding:40px}
+  .story-big-text{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:800;line-height:1.25;letter-spacing:-0.02em;transition:all 0.5s}
+  .logo-reveal{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .logo-glow{font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:#fff;letter-spacing:-0.03em;text-shadow:0 0 40px rgba(0,123,255,0.6),0 0 80px rgba(0,123,255,0.25)}
+  .logo-glow span{color:var(--yellow)}
+
+  /* RESULTS */
+  #results{padding:120px 0}
+  .results-wrap{background:linear-gradient(135deg,rgba(0,123,255,0.08) 0%,rgba(255,195,0,0.04) 100%);border:1px solid rgba(255,255,255,0.07);border-radius:28px;padding:64px;position:relative;overflow:hidden}
+  .results-wrap::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(0,123,255,0.1) 0%,transparent 70%);pointer-events:none}
+  .results-head{text-align:center;margin-bottom:56px}
+  .results-head h2{font-family:'Syne',sans-serif;font-size:clamp(26px,3.5vw,44px);font-weight:800;letter-spacing:-0.025em}
+  .rankers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+  .ranker-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px 20px;text-align:center;transition:transform 0.3s,border-color 0.3s}
+  .ranker-card:hover{transform:translateY(-4px);border-color:rgba(255,195,0,0.3)}
+  .ranker-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,rgba(0,123,255,0.3),rgba(255,195,0,0.2));border:2px solid rgba(255,195,0,0.3);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--yellow);margin:0 auto 14px}
+  .ranker-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px}
+  .ranker-rank{font-size:11px;color:var(--yellow);letter-spacing:0.06em;font-weight:500}
+  .ranker-exam{font-size:11px;color:var(--text-muted);margin-top:3px}
+
+  /* TRUST NUMBERS */
+  #trust{padding:80px 0;border-top:1px solid rgba(255,255,255,0.05)}
+  .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.05);border-radius:20px;overflow:hidden}
+  .trust-item{padding:40px 32px;background:#060f1f;text-align:center}
+  .trust-big{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;letter-spacing:-0.03em;color:#fff}
+  .trust-big span{color:var(--yellow)}
+  .trust-desc{font-size:13px;color:var(--text-muted);margin-top:8px;letter-spacing:0.04em;text-transform:uppercase}
+
+  /* FACULTY */
+  #faculty{padding:120px 0}
+  .faculty-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+  .faculty-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:32px 24px;transition:transform 0.3s,border-color 0.3s;backdrop-filter:blur(10px)}
+  .faculty-card:hover{transform:translateY(-5px);border-color:rgba(0,123,255,0.3)}
+  .faculty-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(0,123,255,0.25),rgba(255,195,0,0.15));border:2px solid rgba(0,123,255,0.3);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--blue);margin-bottom:20px}
+  .faculty-card h4{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:4px}
+  .faculty-card .subject{font-size:12px;color:var(--yellow);letter-spacing:0.06em;font-weight:500;text-transform:uppercase;margin-bottom:12px}
+  .faculty-card p{font-size:13px;color:var(--text-muted);line-height:1.65}
+
+  /* TESTIMONIALS */
+  #testimonials{padding:120px 0}
+  .testimonials-track{display:flex;gap:20px;overflow:hidden}
+  .testi-slider{overflow:hidden;position:relative}
+  .testi-track{display:flex;gap:20px;transition:transform 0.5s cubic-bezier(0.23,1,0.32,1)}
+  .testi-card{min-width:340px;background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:32px;backdrop-filter:blur(10px);flex-shrink:0}
+  .testi-stars{display:flex;gap:3px;margin-bottom:16px}
+  .star{color:var(--yellow);font-size:14px}
+  .testi-card blockquote{font-size:15px;color:var(--text-dim);line-height:1.7;margin-bottom:24px;font-style:italic;font-weight:300}
+  .testi-author{display:flex;align-items:center;gap:12px}
+  .testi-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,rgba(0,123,255,0.3),rgba(255,195,0,0.2));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--yellow)}
+  .testi-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700}
+  .testi-meta{font-size:12px;color:var(--text-muted)}
+  .slider-dots{display:flex;gap:8px;justify-content:center;margin-top:32px}
+  .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;transition:all 0.3s;padding:0}
+  .dot.active{background:var(--yellow);width:20px;border-radius:100px}
+
+  /* URGENCY */
+  #urgency{padding:80px 0}
+  .urgency-box{background:linear-gradient(135deg,rgba(0,123,255,0.1) 0%,rgba(255,195,0,0.06) 100%);border:1px solid rgba(255,195,0,0.2);border-radius:20px;padding:40px;text-align:center;position:relative;overflow:hidden}
+  .urgency-label{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);font-weight:600;margin-bottom:16px}
+  .urgency-box h2{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,36px);font-weight:800;margin-bottom:32px;letter-spacing:-0.02em}
+  .countdown{display:flex;gap:20px;justify-content:center;margin-bottom:36px;flex-wrap:wrap}
+  .cd-unit{text-align:center;min-width:70px}
+  .cd-num{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-0.03em;line-height:1;color:#fff}
+  .cd-label{font-size:10px;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin-top:8px}
+  .cd-sep{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:rgba(255,195,0,0.4);align-self:flex-start;margin-top:4px}
+
+  /* CTA */
+  #cta{padding:140px 0}
+  .cta-inner{text-align:center;max-width:680px;margin:0 auto}
+  .cta-inner h2{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,62px);font-weight:800;letter-spacing:-0.03em;line-height:1.05;margin-bottom:20px}
+  .cta-inner p{font-size:17px;color:var(--text-dim);margin-bottom:44px;line-height:1.7;font-weight:300}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* AI CHAT */
+  #ai-chat{position:fixed;bottom:100px;right:24px;z-index:200}
+  .chat-bubble-btn{width:52px;height:52px;background:var(--blue);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,123,255,0.4);transition:transform 0.2s,box-shadow 0.2s}
+  .chat-bubble-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(0,123,255,0.55)}
+  .chat-bubble-btn svg{width:22px;height:22px;fill:#fff}
+  .chat-window{display:none;position:absolute;bottom:66px;right:0;width:320px;background:rgba(10,20,40,0.9);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.5)}
+  .chat-window.open{display:block}
+  .chat-header{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:10px}
+  .chat-avatar{width:32px;height:32px;background:linear-gradient(135deg,var(--blue),rgba(255,195,0,0.6));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;font-family:'Syne',sans-serif;color:#fff}
+  .chat-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+  .chat-status{font-size:11px;color:#4ade80;margin-top:1px}
+  .chat-messages{height:240px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+  .chat-msg{max-width:80%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.6}
+  .chat-msg.bot{background:rgba(0,123,255,0.15);border:1px solid rgba(0,123,255,0.2);align-self:flex-start;color:var(--text-dim)}
+  .chat-msg.user{background:rgba(255,195,0,0.15);border:1px solid rgba(255,195,0,0.2);align-self:flex-end;color:#fff}
+  .chat-input-row{padding:12px;border-top:1px solid rgba(255,255,255,0.07);display:flex;gap:8px}
+  .chat-input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:9px 16px;font-size:13px;color:#fff;font-family:'DM Sans',sans-serif;outline:none}
+  .chat-input::placeholder{color:rgba(255,255,255,0.3)}
+  .chat-send{width:34px;height:34px;background:var(--yellow);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.2s}
+  .chat-send:hover{transform:scale(1.08)}
+  .chat-send svg{width:14px;height:14px;fill:#0A2540}
+
+  /* WHATSAPP */
+  #wa-btn{position:fixed;bottom:32px;right:24px;z-index:200}
+  .wa-circle{width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s,box-shadow 0.2s;text-decoration:none}
+  .wa-circle:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(37,211,102,0.55)}
+  .wa-circle svg{width:26px;height:26px;fill:#fff}
+
+  /* FOOTER */
+  footer{padding:48px 0;border-top:1px solid rgba(255,255,255,0.06)}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+  .footer-links{display:flex;gap:28px;flex-wrap:wrap}
+  .footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+  .footer-links a:hover{color:#fff}
+  .footer-copy{font-size:12px;color:rgba(255,255,255,0.25)}
+
+  /* MOBILE NAV */
+  @media(max-width:768px){
+    .nav-links,.nav-cta{display:none}
+    .nav-mobile-btn{display:flex}
+    .story-grid{grid-template-columns:1fr}
+    .story-visual{display:none}
+    .results-wrap{padding:40px 24px}
+    .hero-stats{gap:28px}
+    .footer-inner{flex-direction:column;text-align:center}
+    .footer-links{justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="logo" href="#hero">POSITRON<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#faculty">Faculty</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+      </ul>
+      <a class="nav-cta" href="#cta">Book Demo</a>
+      <button class="nav-mobile-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="particle-canvas"></canvas>
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-pill fade-in">
+        <span class="hero-pill-dot"></span>
+        New batch enrollments open for 2025–26
+      </div>
+      <h1 class="fade-in stagger-1">Your Journey to<br><span class="highlight">IIT, NEET & NDA</span><br>Starts Here</h1>
+      <p class="hero-sub fade-in stagger-2">Structured coaching. Expert mentors. Proven results.<br>Where strategy meets dedication.</p>
+      <div class="hero-btns fade-in stagger-3">
+        <a href="#cta" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6L2 12l6 6"/><path d="M2 12h20"/></svg>
+          Book Free Demo Class
+        </a>
+        <a href="https://wa.me/919999999999" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2c-5.514 0-9.996 4.482-9.996 9.996 0 1.751.457 3.39 1.254 4.815L2 22l5.313-1.24a9.957 9.957 0 004.69 1.175c5.512 0 9.995-4.483 9.995-9.996C21.999 6.482 17.516 2 12.004 2z"/></svg>
+          Talk on WhatsApp
+        </a>
+      </div>
+      <div class="hero-stats fade-in stagger-4">
+        <div>
+          <div class="stat-num">1000<span>+</span></div>
+          <div class="stat-label">Selections</div>
+        </div>
+        <div>
+          <div class="stat-num">10<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="stat-num">98<span>%</span></div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+        <div>
+          <div class="stat-num">50<span>+</span></div>
+          <div class="stat-label">Expert Faculty</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED BAR -->
+<div class="trusted-bar">
+  <div class="container">
+    <div class="trusted-inner">
+      <span class="trusted-label">Trusted by students from</span>
+      <span class="trust-badge">Delhi NCR</span>
+      <span class="trust-badge">Haryana</span>
+      <span class="trust-badge">Rajasthan</span>
+      <span class="trust-badge">UP</span>
+      <span class="trust-badge">Punjab</span>
+      <span class="trust-badge">& 20+ More States</span>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="section-label">Programs</div>
+      <h2>Every Path, Perfectly Guided</h2>
+      <p>Expert-designed curricula for every competitive exam. We don't just teach — we transform.</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card fade-in stagger-1">
+        <div class="course-icon">⚛</div>
+        <h3>JEE</h3>
+        <p>Joint Entrance Examination preparation with IIT-focused curriculum, advanced problem-solving, and mock test series.</p>
+        <span class="course-tag">JEE Main + Advanced</span>
+      </div>
+      <div class="course-card fade-in stagger-2">
+        <div class="course-icon">🧬</div>
+        <h3>NEET</h3>
+        <p>National Eligibility cum Entrance Test with complete Biology, Physics & Chemistry mastery for MBBS aspirants.</p>
+        <span class="course-tag">NEET UG Program</span>
+      </div>
+      <div class="course-card fade-in stagger-3">
+        <div class="course-icon">🎖</div>
+        <h3>NDA</h3>
+        <p>National Defence Academy coaching with Maths, GAT, and SSB preparation by ex-service mentors.</p>
+        <span class="course-tag">NDA I & II</span>
+      </div>
+      <div class="course-card fade-in stagger-4">
+        <div class="course-icon">📘</div>
+        <h3>Boards</h3>
+        <p>Class XI & XII Board preparation ensuring academic excellence with NCERT mastery and competitive edge.</p>
+        <span class="course-tag">CBSE / State Boards</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-steps fade-in">
+        <div class="section-label" style="margin-bottom:32px">The Positron Journey</div>
+        <div class="story-step active" data-step="0">
+          <div class="story-step-num">01 — The Struggle</div>
+          <h3>"Hard work… but no direction?"</h3>
+          <p>Thousands of students study hard every day. But without the right direction, effort alone isn't enough. Random studying leads to nowhere.</p>
+        </div>
+        <div class="story-step" data-step="1">
+          <div class="story-step-num">02 — The Reality</div>
+          <h3>"Millions compete. Few succeed."</h3>
+          <p>Every year, over 2 million students compete for limited seats. The difference isn't intelligence — it's strategy, mentorship, and clarity.</p>
+        </div>
+        <div class="story-step" data-step="2">
+          <div class="story-step-num">03 — The Shift</div>
+          <h3>"Right guidance changes everything."</h3>
+          <p>When students get structured learning, expert mentorship, and consistent feedback — results follow. It's not magic. It's method.</p>
+        </div>
+        <div class="story-step" data-step="3">
+          <div class="story-step-num">04 — The Solution</div>
+          <h3>Meet Positron Career Institute</h3>
+          <p>For over a decade, we've been the launchpad for thousands of successful doctors, engineers, and officers. Your story starts here.</p>
+        </div>
+      </div>
+      <div class="story-visual fade-in stagger-2">
+        <div class="story-visual-inner" id="story-display">
+          <div class="story-big-text" id="story-text">Hard work<br>without direction<br>is just<br><span style="color:var(--yellow)">wasted effort.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="container">
+    <div class="results-wrap fade-in">
+      <div class="results-head">
+        <div class="section-label">Hall of Fame</div>
+        <h2>Our Rankers Speak</h2>
+      </div>
+      <div class="rankers-grid">
+        <div class="ranker-card fade-in stagger-1"><div class="ranker-avatar">AK</div><div class="ranker-name">Aryan Kapoor</div><div class="ranker-rank">AIR 247</div><div class="ranker-exam">JEE Advanced 2024</div></div>
+        <div class="ranker-card fade-in stagger-2"><div class="ranker-avatar">PS</div><div class="ranker-name">Priya Sharma</div><div class="ranker-rank">720 / 720</div><div class="ranker-exam">NEET 2024</div></div>
+        <div class="ranker-card fade-in stagger-3"><div class="ranker-avatar">RV</div><div class="ranker-name">Rohit Verma</div><div class="ranker-rank">AIR 312</div><div class="ranker-exam">NDA Written 2024</div></div>
+        <div class="ranker-card fade-in stagger-1"><div class="ranker-avatar">NK</div><div class="ranker-name">Neha Kumar</div><div class="ranker-rank">AIR 89</div><div class="ranker-exam">JEE Main 2024</div></div>
+        <div class="ranker-card fade-in stagger-2"><div class="ranker-avatar">SM</div><div class="ranker-name">Siddharth M.</div><div class="ranker-rank">715 / 720</div><div class="ranker-exam">NEET 2023</div></div>
+        <div class="ranker-card fade-in stagger-3"><div class="ranker-avatar">DG</div><div class="ranker-name">Divya Gupta</div><div class="ranker-rank">AIR 178</div><div class="ranker-exam">JEE Advanced 2023</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST NUMBERS -->
+<section id="trust">
+  <div class="container">
+    <div class="trust-grid fade-in">
+      <div class="trust-item">
+        <div class="trust-big">1000<span>+</span></div>
+        <div class="trust-desc">Total Selections</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-big">10<span>+</span></div>
+        <div class="trust-desc">Years of Excellence</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-big">50<span>+</span></div>
+        <div class="trust-desc">Expert Faculty</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-big">98<span>%</span></div>
+        <div class="trust-desc">Student Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section id="faculty">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="section-label">The Team</div>
+      <h2>Mentors Who've Been There</h2>
+      <p>IITians, NITians, and subject specialists who turn complex concepts into clarity.</p>
+    </div>
+    <div class="faculty-grid">
+      <div class="faculty-card fade-in stagger-1">
+        <div class="faculty-avatar">RS</div>
+        <h4>Dr. Rajiv Sharma</h4>
+        <div class="subject">Physics · JEE</div>
+        <p>IIT Delhi graduate. 12 years of JEE coaching. Over 300 IIT selections under his mentorship.</p>
+      </div>
+      <div class="faculty-card fade-in stagger-2">
+        <div class="faculty-avatar">AP</div>
+        <h4>Dr. Anjali Patil</h4>
+        <div class="subject">Biology · NEET</div>
+        <p>AIIMS Delhi alumna. Specializes in Zoology and Botany with a focus on clinical application concepts.</p>
+      </div>
+      <div class="faculty-card fade-in stagger-3">
+        <div class="faculty-avatar">MK</div>
+        <h4>Prof. Manish Kumar</h4>
+        <div class="subject">Mathematics · JEE / NDA</div>
+        <p>NIT Surathkal, 15 years experience. Known for making Calculus and Algebra intuitive for all learners.</p>
+      </div>
+      <div class="faculty-card fade-in stagger-4">
+        <div class="faculty-avatar">SC</div>
+        <h4>Col. S. Chauhan (Retd.)</h4>
+        <div class="subject">GK / SSB · NDA</div>
+        <p>30 years Indian Army service. Guides NDA aspirants on SSB preparation, personality, and physical fitness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="section-label">Student Stories</div>
+      <h2>Voices from the Journey</h2>
+    </div>
+    <div class="testi-slider fade-in">
+      <div class="testi-track" id="testi-track">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>"Positron didn't just prepare me for JEE — they gave me a mindset. The structured approach and constant mentorship helped me crack AIR 247. Genuinely life-changing."</blockquote>
+          <div class="testi-author"><div class="testi-av">AK</div><div><div class="testi-name">Aryan Kapoor</div><div class="testi-meta">JEE Advanced 2024 · AIR 247</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>"I scored 720/720 in NEET. It sounds impossible but Positron's Biology and Chemistry faculty made every concept so clear. Their mock tests are harder than the actual exam!"</blockquote>
+          <div class="testi-author"><div class="testi-av">PS</div><div><div class="testi-name">Priya Sharma</div><div class="testi-meta">NEET 2024 · 720/720</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>"As a parent, I was worried about my daughter's preparation. Positron kept us informed every step of the way. The faculty is outstanding and the environment is motivating."</blockquote>
+          <div class="testi-author"><div class="testi-av">MG</div><div><div class="testi-name">Mr. Mahesh Gupta</div><div class="testi-meta">Parent · Divya's Father</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>"NDA selection at 17. Col. Chauhan's SSB preparation was exceptional. I walked into the interview confident and came out selected. Positron is where dreams become plans."</blockquote>
+          <div class="testi-author"><div class="testi-av">RV</div><div><div class="testi-name">Rohit Verma</div><div class="testi-meta">NDA 154 · Selected 2024</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>"The study material here is elite. Not too much, not too little. Every chapter has exactly what you need for the exam. I wish I had joined Positron in Class 10 itself!"</blockquote>
+          <div class="testi-author"><div class="testi-av">NK</div><div><div class="testi-name">Neha Kumar</div><div class="testi-meta">JEE Main 2024 · AIR 89</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-dots" id="slider-dots">
+      <button class="dot active"></button>
+      <button class="dot"></button>
+      <button class="dot"></button>
+      <button class="dot"></button>
+      <button class="dot"></button>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY -->
+<section id="urgency">
+  <div class="container">
+    <div class="urgency-box fade-in">
+      <div class="urgency-label">⚡ Limited Seats Available</div>
+      <h2>New Batch Starting Soon — Reserve Your Seat</h2>
+      <div class="countdown">
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-days">00</div>
+          <div class="cd-label">Days</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-hours">00</div>
+          <div class="cd-label">Hours</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-mins">00</div>
+          <div class="cd-label">Minutes</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-secs">00</div>
+          <div class="cd-label">Seconds</div>
+        </div>
+      </div>
+      <a href="#cta" class="btn-primary">Secure My Seat Now →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="section-label fade-in">Begin Now</div>
+      <h2 class="fade-in stagger-1">Secure Your Seat<br>at <span style="color:var(--yellow)">Positron</span></h2>
+      <p class="fade-in stagger-2">One decision. One demo. The rest is history.<br>Join 1000+ students who chose the right path.</p>
+      <div class="cta-btns fade-in stagger-3">
+        <a href="tel:+919999999999" class="btn-primary">
+          Book Free Demo Class →
+        </a>
+        <a href="https://wa.me/919999999999" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2c-5.514 0-9.996 4.482-9.996 9.996 0 1.751.457 3.39 1.254 4.815L2 22l5.313-1.24a9.957 9.957 0 004.69 1.175c5.512 0 9.995-4.483 9.995-9.996C21.999 6.482 17.516 2 12.004 2z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI CHAT -->
+<div id="ai-chat">
+  <div class="chat-window" id="chat-window">
+    <div class="chat-header">
+      <div class="chat-avatar">P</div>
+      <div>
+        <div class="chat-name">Positron AI Assistant</div>
+        <div class="chat-status">● Online now</div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Hi! I'm your Positron guide. Ask me about courses, fees, batch dates, or anything else. 👋</div>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chat-input" type="text" placeholder="Ask anything…">
+      <button class="chat-send" id="chat-send-btn">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+  <button class="chat-bubble-btn" id="chat-toggle">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  </button>
+</div>
+
+<!-- WHATSAPP -->
+<div id="wa-btn">
+  <a class="wa-circle" href="https://wa.me/919999999999" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2c-5.514 0-9.996 4.482-9.996 9.996 0 1.751.457 3.39 1.254 4.815L2 22l5.313-1.24a9.957 9.957 0 004.69 1.175c5.512 0 9.995-4.483 9.995-9.996C21.999 6.482 17.516 2 12.004 2z"/></svg>
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a class="logo" href="#hero">POSITRON<span>.</span></a>
+      <div class="footer-links">
+        <a href="#courses">Courses</a>
+        <a href="#faculty">Faculty</a>
+        <a href="#results">Results</a>
+        <a href="tel:+919999999999">Contact</a>
+        <a href="#">Privacy</a>
+      </div>
+      <div class="footer-copy">© 2025 Positron Career Institute. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// PARTICLES
+(function(){
+  const canvas=document.getElementById('particle-canvas');
+  const ctx=canvas.getContext('2d');
+  let W,H,particles=[];
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+  resize();
+  window.addEventListener('resize',resize);
+  for(let i=0;i<55;i++){
+    particles.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+0.3,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,a:Math.random()})
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.a+=0.005;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(0,123,255,${0.3+0.2*Math.sin(p.a)})`;
+      ctx.fill();
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;
+      if(p.y<0||p.y>H)p.vy*=-1;
+    });
+    // Draw faint lines between close particles
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<130){
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x,particles[i].y);
+          ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.strokeStyle=`rgba(0,123,255,${0.08*(1-dist/130)})`;
+          ctx.lineWidth=0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// SCROLL ANIMATIONS
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.12});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+// NAV SCROLL
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);
+});
+
+// STORY STEPS
+const storyTexts=[
+  "Hard work<br>without direction<br>is just<br><span style='color:var(--yellow)'>wasted effort.</span>",
+  "2 million students.<br>Limited seats.<br>The difference is<br><span style='color:var(--yellow)'>strategy.</span>",
+  "Right guidance<br>turns potential<br>into<br><span style='color:var(--yellow)'>reality.</span>",
+  "<span style='color:rgba(255,255,255,0.4);font-size:0.6em;letter-spacing:0.12em;text-transform:uppercase'>Welcome to</span><br><span style='font-size:1.2em;text-shadow:0 0 40px rgba(0,123,255,0.6),0 0 80px rgba(0,123,255,0.25)'>POSITRON<span style='color:var(--yellow)'>.</span></span>"
+];
+document.querySelectorAll('.story-step').forEach(step=>{
+  step.addEventListener('click',()=>{
+    document.querySelectorAll('.story-step').forEach(s=>s.classList.remove('active'));
+    step.classList.add('active');
+    const idx=parseInt(step.dataset.step);
+    const display=document.getElementById('story-text');
+    display.style.opacity='0';
+    display.style.transform='translateY(10px)';
+    setTimeout(()=>{
+      display.innerHTML=storyTexts[idx];
+      display.style.opacity='1';
+      display.style.transform='translateY(0)';
+    },250);
+  });
+});
+document.getElementById('story-text').style.transition='opacity 0.4s,transform 0.4s';
+
+// TESTIMONIAL SLIDER
+let currentSlide=0;
+const track=document.getElementById('testi-track');
+const dots=document.querySelectorAll('.dot');
+function goToSlide(n){
+  currentSlide=n;
+  const cardW=track.querySelector('.testi-card').offsetWidth+20;
+  track.style.transform=`translateX(-${n*cardW}px)`;
+  dots.forEach((d,i)=>d.classList.toggle('active',i===n));
+}
+dots.forEach((d,i)=>d.addEventListener('click',()=>goToSlide(i)));
+setInterval(()=>goToSlide((currentSlide+1)%5),4000);
+
+// COUNTDOWN TIMER
+function setCountdown(){
+  const target=new Date();
+  target.setDate(target.getDate()+12);
+  target.setHours(0,0,0,0);
+  function update(){
+    const now=new Date();
+    const diff=target-now;
+    if(diff<=0){document.getElementById('cd-days').textContent='00';return}
+    const d=Math.floor(diff/86400000);
+    const h=Math.floor((diff%86400000)/3600000);
+    const m=Math.floor((diff%3600000)/60000);
+    const s=Math.floor((diff%60000)/1000);
+    document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
+  }
+  update();
+  setInterval(update,1000);
+}
+setCountdown();
+
+// AI CHAT
+const chatResponses={
+  'fee':'Our course fees start from ₹45,000/year. We also offer EMI and scholarship options. Would you like to book a free demo to learn more?',
+  'demo':'Great! You can book a free demo class by calling us at +91-9999999999 or clicking the button on this page. No commitment needed.',
+  'batch':'Our new batches start soon — in about 12 days! Seats are limited, so we recommend enrolling early to secure your spot.',
+  'jee':'Our JEE program covers both Main and Advanced. We have 2-year and 1-year crash courses with IIT alumni faculty.',
+  'neet':'Our NEET program is comprehensive — Biology, Physics, Chemistry with special focus on NCERT mastery and 200+ mock tests.',
+  'nda':'NDA preparation includes Maths, GAT, and complete SSB coaching by a retired Colonel with 30 years of Army experience.',
+  'result':'We have 1000+ selections so far! Top rankers include AIR 89 in JEE and 720/720 in NEET. Visit our Results section for more.',
+  'contact':'You can reach us at +91-9999999999 or WhatsApp us directly. We respond within minutes during 8AM–9PM.',
+};
+function getResponse(msg){
+  msg=msg.toLowerCase();
+  for(const key in chatResponses){if(msg.includes(key))return chatResponses[key]}
+  return "That's a great question! For the most accurate answer, please WhatsApp us or call +91-9999999999. Our counselors are available 8AM–9PM daily.";
+}
+document.getElementById('chat-toggle').addEventListener('click',()=>{
+  document.getElementById('chat-window').classList.toggle('open');
+});
+document.getElementById('chat-send-btn').addEventListener('click',sendChat);
+document.getElementById('chat-input').addEventListener('keypress',e=>{if(e.key==='Enter')sendChat()});
+function sendChat(){
+  const inp=document.getElementById('chat-input');
+  const msg=inp.value.trim();
+  if(!msg)return;
+  const msgs=document.getElementById('chat-messages');
+  msgs.innerHTML+=`<div class="chat-msg user">${msg}</div>`;
+  inp.value='';
+  setTimeout(()=>{
+    msgs.innerHTML+=`<div class="chat-msg bot">${getResponse(msg)}</div>`;
+    msgs.scrollTop=msgs.scrollHeight;
+  },600);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+// HERO FADE IN on load
+window.addEventListener('load',()=>{
+  document.querySelectorAll('#hero .fade-in').forEach((el,i)=>{
+    setTimeout(()=>el.classList.add('visible'),200+i*150);
+  });
+});
+</script>
+</body>
+</html>
